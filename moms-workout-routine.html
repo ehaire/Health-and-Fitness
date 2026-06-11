@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home Workout Routine</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F7F4EF;
+    --warm-white: #FDFCFA;
+    --charcoal: #2A2A2A;
+    --mid: #6B6560;
+    --accent: #C17B4E;
+    --accent-light: #F0E0D0;
+    --divider: #E4DDD6;
+    --leg: #D4E8D4;
+    --leg-text: #2D5A2D;
+    --glute: #E8D4E8;
+    --glute-text: #5A2D5A;
+    --back: #D4DDE8;
+    --back-text: #2D3D5A;
+    --chest: #E8E4D4;
+    --chest-text: #5A522D;
+    --shoulder: #E8D4D4;
+    --shoulder-text: #5A2D2D;
+    --arms: #D4E8E4;
+    --arms-text: #2D5A52;
+    --core: #E8EAD4;
+    --core-text: #4A5A2D;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--charcoal);
+    line-height: 1.6;
+    padding: 0 0 60px;
+  }
+
+  header {
+    background: var(--charcoal);
+    color: var(--cream);
+    padding: 40px 24px 32px;
+    text-align: center;
+  }
+
+  header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    margin-bottom: 6px;
+  }
+
+  header p {
+    font-size: 0.9rem;
+    color: #AAA49E;
+    font-weight: 300;
+  }
+
+  .schedule {
+    display: flex;
+    gap: 0;
+    margin: 24px 16px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--divider);
+    background: var(--warm-white);
+  }
+
+  .schedule-day {
+    flex: 1;
+    padding: 14px 8px;
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--mid);
+    border-right: 1px solid var(--divider);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .schedule-day:last-child { border-right: none; }
+
+  .schedule-day.active {
+    background: var(--charcoal);
+    color: var(--cream);
+  }
+
+  .schedule-day.cardio {
+    background: var(--accent-light);
+    color: var(--accent);
+  }
+
+  .schedule-day .type {
+    display: block;
+    font-size: 0.65rem;
+    margin-top: 3px;
+    opacity: 0.7;
+    font-weight: 400;
+  }
+
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--mid);
+    padding: 20px 20px 8px;
+  }
+
+  .exercise-card {
+    background: var(--warm-white);
+    margin: 0 16px 10px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--divider);
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    padding: 14px 16px;
+    gap: 12px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .card-header:active { opacity: 0.8; }
+
+  .muscle-tag {
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 3px 8px;
+    border-radius: 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .tag-legs { background: var(--leg); color: var(--leg-text); }
+  .tag-glutes { background: var(--glute); color: var(--glute-text); }
+  .tag-back { background: var(--back); color: var(--back-text); }
+  .tag-chest { background: var(--chest); color: var(--chest-text); }
+  .tag-shoulders { background: var(--shoulder); color: var(--shoulder-text); }
+  .tag-biceps { background: var(--arms); color: var(--arms-text); }
+  .tag-triceps { background: var(--arms); color: var(--arms-text); }
+  .tag-core { background: var(--core); color: var(--core-text); }
+
+  .exercise-name {
+    font-size: 1rem;
+    font-weight: 500;
+    flex: 1;
+  }
+
+  .sets-reps {
+    font-size: 0.8rem;
+    color: var(--accent);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .chevron {
+    color: var(--mid);
+    font-size: 0.8rem;
+    transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+
+  .card-body {
+    display: none;
+    padding: 0 16px 16px;
+    border-top: 1px solid var(--divider);
+  }
+
+  .card-body.open { display: block; }
+  .chevron.open { transform: rotate(180deg); }
+
+  .how-to {
+    font-size: 0.88rem;
+    color: var(--mid);
+    line-height: 1.65;
+    padding-top: 12px;
+  }
+
+  .how-to strong {
+    color: var(--charcoal);
+    font-weight: 500;
+  }
+
+  .progression {
+    margin-top: 10px;
+    background: var(--accent-light);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 0.8rem;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  .progression span {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 2px;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+  }
+
+  .tip {
+    margin-top: 10px;
+    background: #F0F4F0;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 0.8rem;
+    color: #3A5A3A;
+  }
+
+  .tip span {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 2px;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+  }
+
+  footer {
+    margin: 28px 16px 0;
+    background: var(--charcoal);
+    border-radius: 12px;
+    padding: 20px;
+    color: #AAA49E;
+    font-size: 0.82rem;
+    line-height: 1.7;
+  }
+
+  footer strong { color: var(--cream); }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Home Workout Routine</h1>
+  <p>Beginner · Full Body</p>
+</header>
+
+<div style="margin: 24px 16px 10px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--mid);">Sample Patterns</div>
+
+<div style="margin: 0 16px 10px; background: var(--warm-white); border: 1px solid var(--divider); border-radius: 12px; overflow: hidden;">
+  <div style="display: flex; align-items: center; padding: 12px 14px; gap: 6px; flex-wrap: nowrap;">
+    <span style="font-size: 0.72rem; background: var(--accent-light); color: var(--accent); font-weight: 600; padding: 4px 9px; border-radius: 20px; white-space: nowrap;">Cardio</span>
+    <span style="color: var(--divider); font-size: 0.8rem;">→</span>
+    <span style="font-size: 0.72rem; background: var(--charcoal); color: var(--cream); font-weight: 600; padding: 4px 9px; border-radius: 20px; white-space: nowrap;">Strength</span>
+    <span style="color: var(--divider); font-size: 0.8rem;">→</span>
+    <span style="font-size: 0.72rem; background: var(--accent-light); color: var(--accent); font-weight: 600; padding: 4px 9px; border-radius: 20px; white-space: nowrap;">Cardio</span>
+    <span style="color: var(--divider); font-size: 0.8rem;">→</span>
+    <span style="font-size: 0.72rem; background: var(--leg); color: var(--leg-text); font-weight: 600; padding: 4px 9px; border-radius: 20px; white-space: nowrap;">Rest</span>
+    <span style="color: var(--mid); font-size: 1rem;">↺</span>
+  </div>
+  <div style="padding: 8px 14px; font-size: 0.72rem; color: var(--mid); border-top: 1px solid var(--divider);">More active</div>
+</div>
+
+<div style="margin: 0 16px 20px; background: var(--warm-white); border: 1px solid var(--divider); border-radius: 12px; overflow: hidden;">
+  <div style="display: flex; align-items: center; padding: 12px 14px; gap: 6px; flex-wrap: nowrap;">
+    <span style="font-size: 0.72rem; background: var(--accent-light); color: var(--accent); font-weight: 600; padding: 4px 9px; border-radius: 20px; white-space: nowrap;">Cardio</span>
+    <span style="color: var(--divider); font-size: 0.8rem;">→</span>
+    <span style="font-size: 0.72rem; background: var(--charcoal); color: var(--cream); font-weight: 600; padding: 4px 9px; border-radius: 20px; white-space: nowrap;">Strength</span>
+    <span style="color: var(--divider); font-size: 0.8rem;">→</span>
+    <span style="font-size: 0.72rem; background: var(--leg); color: var(--leg-text); font-weight: 600; padding: 4px 9px; border-radius: 20px; white-space: nowrap;">Rest</span>
+    <span style="color: var(--mid); font-size: 1rem;">↺</span>
+  </div>
+  <div style="padding: 8px 14px; font-size: 0.72rem; color: var(--mid); border-top: 1px solid var(--divider);">More recovery</div>
+</div>
+
+<div style="margin: -10px 16px 20px; font-size: 0.78rem; color: var(--mid); line-height: 1.5;">
+  Pick whichever feels right for the week. If you miss a day, just pick up where you left off.
+</div>
+
+<div class="section-label">Legs</div>
+
+<div class="exercise-card">
+  <div class="card-header" onclick="toggle(this)">
+    <span class="muscle-tag tag-legs">Legs</span>
+    <span class="exercise-name">Squat</span>
+    <span class="sets-reps">2–3 × 10</span>
+    <span class="chevron">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="how-to">
+      Stand with feet shoulder-width apart, toes pointed slightly out. <strong>Push your hips back and bend your knees</strong>, lowering until your thighs are as close to parallel to the floor as comfortable. Keep your chest up and knees tracking over your toes. Push through your heels to stand back up.
+    </div>
+    <div class="progression">
+      <span>Progression</span>
+      Start by squatting down to touch the ottoman and standing back up. If needed, sit fully and use your hands to help get up. Work toward just touching it lightly and standing without sitting.
+    </div>
+  </div>
+</div>
+
+<div class="exercise-card">
+  <div class="card-header" onclick="toggle(this)">
+    <span class="muscle-tag tag-legs">Legs</span>
+    <span class="exercise-name">Reverse Lunge</span>
+    <span class="sets-reps">2–3 × 8 each</span>
+    <span class="chevron">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="how-to">
+      Stand tall, feet together. <strong>Step one foot back</strong> and lower your back knee toward the floor, keeping your front knee directly over your ankle. Push through your front heel to step back to standing. Alternate legs each rep. Hold a chair or wall for balance if needed.
+    </div>
+    <div class="tip">
+      <span>Why reverse instead of forward</span>
+      Stepping back is easier on the knees and requires less balance than a standard forward lunge.
+    </div>
+  </div>
+</div>
+
+<div class="section-label">Glutes & Hips</div>
+
+<div class="exercise-card">
+  <div class="card-header" onclick="toggle(this)">
+    <span class="muscle-tag tag-glutes">Glutes</span>
+    <span class="exercise-name">Hip Thrust</span>
+    <span class="sets-reps">2–3 × 12</span>
+    <span class="chevron">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="how-to">
+      Sit on the floor with your upper back resting against the couch cushion, knees bent, feet flat on the floor. <strong>Drive through your heels and squeeze your glutes</strong> to lift your hips until your body forms a straight line from shoulders to knees. Hold for a second at the top, then lower back down slowly.
+    </div>
+  </div>
+</div>
+
+<div class="section-label">Back</div>
+
+<div class="exercise-card">
+  <div class="card-header" onclick="toggle(this)">
+    <span class="muscle-tag tag-back">Back</span>
+    <span class="exercise-name">Single Arm Dumbbell Row</span>
+    <span class="sets-reps">2–3 × 10 each</span>
+    <span class="chevron">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="how-to">
+      Place one hand and the same-side knee on a chair or couch for support. Hold a dumbbell in the opposite hand, arm hanging straight down. <strong>Pull the dumbbell up toward your hip — not your shoulder</strong>, so your hand ends up roughly at your waistline when your elbow is fully bent. Keep your elbow close to your body and your back flat throughout. Lower slowly.
+    </div>
+  </div>
+</div>
+
+<div class="section-label">Chest</div>
+
+<div class="exercise-card">
+  <div class="card-header" onclick="toggle(this)">
+    <span class="muscle-tag tag-chest">Chest</span>
+    <span class="exercise-name">Wall Push-Up</span>
+    <span class="sets-reps">2–3 × 10–15</span>
+    <span class="chevron">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="how-to">
+      Stand facing a wall, arms extended, hands flat on the wall at shoulder height. <strong>Bend your elbows and lower your chest toward the wall</strong>, then push back to the start. The further your feet are from the wall, the harder it is.
+    </div>
+    <div class="progression">
+      <span>Progression</span>
+      Wall push-ups → hands on a countertop → knee push-ups on the floor.
+    </div>
+  </div>
+</div>
+
+<div class="section-label">Shoulders</div>
+
+<div class="exercise-card">
+  <div class="card-header" onclick="toggle(this)">
+    <span class="muscle-tag tag-shoulders">Shoulders</span>
+    <span class="exercise-name">Seated Dumbbell Press</span>
+    <span class="sets-reps">2–3 × 10</span>
+    <span class="chevron">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="how-to">
+      Sit in a chair with back support. Hold a dumbbell in each hand at shoulder height, palms facing forward. <strong>Press both dumbbells straight up</strong> until your arms are almost fully extended, then lower back to shoulder height slowly.
+    </div>
+  </div>
+</div>
+
+<div class="section-label">Arms</div>
+
+<div class="exercise-card">
+  <div class="card-header" onclick="toggle(this)">
+    <span class="muscle-tag tag-biceps">Biceps</span>
+    <span class="exercise-name">Dumbbell Curl</span>
+    <span class="sets-reps">2–3 × 10–12</span>
+    <span class="chevron">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="how-to">
+      Stand or sit with a dumbbell in each hand, palms facing forward, arms at your sides. <strong>Curl both dumbbells up toward your shoulders</strong> by bending at the elbow, keeping your upper arms still. Lower slowly.
+    </div>
+  </div>
+</div>
+
+<div class="exercise-card">
+  <div class="card-header" onclick="toggle(this)">
+    <span class="muscle-tag tag-triceps">Triceps</span>
+    <span class="exercise-name">Dumbbell Kickback</span>
+    <span class="sets-reps">2–3 × 10–12</span>
+    <span class="chevron">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="how-to">
+      Hinge forward slightly at the hips, bracing your free hand on a chair. Hold a dumbbell with your upper arm pinned against your side, elbow bent at 90°. <strong>Straighten your arm back and up</strong> by extending the elbow until your arm is straight, then slowly return. Keep your upper arm still the whole time.
+    </div>
+  </div>
+</div>
+
+<div class="section-label">Core</div>
+
+<div class="exercise-card">
+  <div class="card-header" onclick="toggle(this)">
+    <span class="muscle-tag tag-core">Core</span>
+    <span class="exercise-name">Dead Bug</span>
+    <span class="sets-reps">2 × 8 each side</span>
+    <span class="chevron">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="how-to">
+      Lie on your back, arms pointing straight up toward the ceiling, knees bent at 90° in the air. <strong>Slowly lower one arm back overhead and extend the opposite leg out</strong>, keeping your lower back pressed into the floor. Bring them back and switch sides. Move slowly and controlled.
+    </div>
+    <div class="tip">
+      <span>Why this over crunches</span>
+      No strain on the neck or spine. Works deep core stability.
+    </div>
+  </div>
+</div>
+
+<footer>
+  <strong>General guidelines</strong><br>
+  Rest 60–90 seconds between sets. Start with light dumbbells (5–8 lbs) and only add weight when the last few reps feel easy. It's okay to do fewer sets at first — 2 sets of everything is plenty to start. The goal right now is learning the movements and building the habit.
+</footer>
+
+<script>
+  function toggle(header) {
+    const body = header.nextElementSibling;
+    const chevron = header.querySelector('.chevron');
+    body.classList.toggle('open');
+    chevron.classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>
