@@ -3,250 +3,68 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Home Workout Routine</title>
+<title>Home Workout Exercises</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap');
-
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
-    --cream: #F7F4EF;
-    --warm-white: #FDFCFA;
-    --charcoal: #2A2A2A;
-    --mid: #6B6560;
-    --accent: #C17B4E;
-    --accent-light: #F0E0D0;
+    --cream: #F7F4EF; --warm-white: #FDFCFA; --charcoal: #2A2A2A;
+    --mid: #6B6560; --accent: #C17B4E; --accent-light: #F0E0D0;
     --divider: #E4DDD6;
-    --leg: #D4E8D4;
-    --leg-text: #2D5A2D;
-    --glute: #E8D4E8;
-    --glute-text: #5A2D5A;
-    --back: #D4DDE8;
-    --back-text: #2D3D5A;
-    --chest: #E8E4D4;
-    --chest-text: #5A522D;
-    --shoulder: #E8D4D4;
-    --shoulder-text: #5A2D2D;
-    --arms: #D4E8E4;
-    --arms-text: #2D5A52;
-    --core: #E8EAD4;
-    --core-text: #4A5A2D;
+    --leg: #D4E8D4; --leg-text: #2D5A2D;
+    --glute: #E8D4E8; --glute-text: #5A2D5A;
+    --back: #D4DDE8; --back-text: #2D3D5A;
+    --chest: #E8E4D4; --chest-text: #5A522D;
+    --shoulder: #E8D4D4; --shoulder-text: #5A2D2D;
+    --biceps: #D4E8E4; --biceps-text: #2D5A52;
+    --triceps: #E4E8D4; --triceps-text: #4A5A2D;
+    --core: #E8EAD4; --core-text: #4A5A2D;
+    --cardio: #F0E4D4; --cardio-text: #7A4A2A;
   }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--cream);
-    color: var(--charcoal);
-    line-height: 1.6;
-    padding: 0 0 60px;
-  }
-
-  header {
-    background: var(--charcoal);
-    color: var(--cream);
-    padding: 40px 24px 32px;
-    text-align: center;
-  }
-
-  header h1 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 2rem;
-    font-weight: 400;
-    letter-spacing: -0.01em;
-    margin-bottom: 6px;
-  }
-
-  header p {
-    font-size: 0.9rem;
-    color: #AAA49E;
-    font-weight: 300;
-  }
-
-  .schedule {
-    display: flex;
-    gap: 0;
-    margin: 24px 16px;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid var(--divider);
-    background: var(--warm-white);
-  }
-
-  .schedule-day {
-    flex: 1;
-    padding: 14px 8px;
-    text-align: center;
-    font-size: 0.75rem;
-    font-weight: 500;
-    color: var(--mid);
-    border-right: 1px solid var(--divider);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  .schedule-day:last-child { border-right: none; }
-
-  .schedule-day.active {
-    background: var(--charcoal);
-    color: var(--cream);
-  }
-
-  .schedule-day.cardio {
-    background: var(--accent-light);
-    color: var(--accent);
-  }
-
-  .schedule-day .type {
-    display: block;
-    font-size: 0.65rem;
-    margin-top: 3px;
-    opacity: 0.7;
-    font-weight: 400;
-  }
-
-  .section-label {
-    font-size: 0.7rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--mid);
-    padding: 20px 20px 8px;
-  }
-
-  .exercise-card {
-    background: var(--warm-white);
-    margin: 0 16px 10px;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid var(--divider);
-  }
-
-  .card-header {
-    display: flex;
-    align-items: center;
-    padding: 14px 16px;
-    gap: 12px;
-    cursor: pointer;
-    user-select: none;
-  }
-
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--charcoal); line-height: 1.6; padding: 0 0 60px; }
+  header { background: var(--charcoal); color: var(--cream); padding: 40px 24px 32px; text-align: center; }
+  header h1 { font-family: 'DM Serif Display', serif; font-size: 2rem; font-weight: 400; letter-spacing: -0.01em; margin-bottom: 6px; }
+  header p { font-size: 0.9rem; color: #AAA49E; font-weight: 300; }
+  .section-label { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--mid); padding: 20px 20px 8px; }
+  .exercise-card { background: var(--warm-white); margin: 0 16px 10px; border-radius: 12px; overflow: hidden; border: 1px solid var(--divider); }
+  .card-header { display: flex; align-items: center; padding: 14px 16px; gap: 12px; cursor: pointer; user-select: none; }
   .card-header:active { opacity: 0.8; }
-
-  .muscle-tag {
-    font-size: 0.65rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    padding: 3px 8px;
-    border-radius: 20px;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-
+  .muscle-tag { font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; padding: 3px 8px; border-radius: 20px; white-space: nowrap; flex-shrink: 0; }
   .tag-legs { background: var(--leg); color: var(--leg-text); }
   .tag-glutes { background: var(--glute); color: var(--glute-text); }
   .tag-back { background: var(--back); color: var(--back-text); }
   .tag-chest { background: var(--chest); color: var(--chest-text); }
   .tag-shoulders { background: var(--shoulder); color: var(--shoulder-text); }
-  .tag-biceps { background: var(--arms); color: var(--arms-text); }
-  .tag-triceps { background: var(--arms); color: var(--arms-text); }
+  .tag-biceps { background: var(--biceps); color: var(--biceps-text); }
+  .tag-triceps { background: var(--triceps); color: var(--triceps-text); }
   .tag-core { background: var(--core); color: var(--core-text); }
-
-  .exercise-name {
-    font-size: 1rem;
-    font-weight: 500;
-    flex: 1;
-  }
-
-  .sets-reps {
-    font-size: 0.8rem;
-    color: var(--accent);
-    font-weight: 600;
-    white-space: nowrap;
-  }
-
-  .chevron {
-    color: var(--mid);
-    font-size: 0.8rem;
-    transition: transform 0.2s;
-    flex-shrink: 0;
-  }
-
-  .card-body {
-    display: none;
-    padding: 0 16px 16px;
-    border-top: 1px solid var(--divider);
-  }
-
+  .tag-cardio { background: var(--cardio); color: var(--cardio-text); }
+  .exercise-name { font-size: 1rem; font-weight: 500; flex: 1; }
+  .sets-reps { font-size: 0.8rem; color: var(--accent); font-weight: 600; white-space: nowrap; }
+  .chevron { color: var(--mid); font-size: 0.8rem; transition: transform 0.2s; flex-shrink: 0; }
+  .card-body { display: none; padding: 0 16px 16px; border-top: 1px solid var(--divider); }
   .card-body.open { display: block; }
   .chevron.open { transform: rotate(180deg); }
-
-  .how-to {
-    font-size: 0.88rem;
-    color: var(--mid);
-    line-height: 1.65;
-    padding-top: 12px;
-  }
-
-  .how-to strong {
-    color: var(--charcoal);
-    font-weight: 500;
-  }
-
-  .progression {
-    margin-top: 10px;
-    background: var(--accent-light);
-    border-radius: 8px;
-    padding: 10px 12px;
-    font-size: 0.8rem;
-    color: var(--accent);
-    font-weight: 500;
-  }
-
-  .progression span {
-    font-weight: 600;
-    display: block;
-    margin-bottom: 2px;
-    text-transform: uppercase;
-    font-size: 0.7rem;
-    letter-spacing: 0.05em;
-  }
-
-  .tip {
-    margin-top: 10px;
-    background: #F0F4F0;
-    border-radius: 8px;
-    padding: 10px 12px;
-    font-size: 0.8rem;
-    color: #3A5A3A;
-  }
-
-  .tip span {
-    font-weight: 600;
-    display: block;
-    margin-bottom: 2px;
-    text-transform: uppercase;
-    font-size: 0.7rem;
-    letter-spacing: 0.05em;
-  }
-
-  footer {
-    margin: 28px 16px 0;
-    background: var(--charcoal);
-    border-radius: 12px;
-    padding: 20px;
-    color: #AAA49E;
-    font-size: 0.82rem;
-    line-height: 1.7;
-  }
-
+  .how-to { font-size: 0.88rem; color: var(--mid); line-height: 1.65; padding-top: 12px; }
+  .how-to strong { color: var(--charcoal); font-weight: 500; }
+  .progression { margin-top: 10px; background: var(--accent-light); border-radius: 8px; padding: 10px 12px; font-size: 0.8rem; color: var(--accent); font-weight: 500; }
+  .progression span { font-weight: 600; display: block; margin-bottom: 2px; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.05em; }
+  .tip { margin-top: 10px; background: #F0F4F0; border-radius: 8px; padding: 10px 12px; font-size: 0.8rem; color: #3A5A3A; }
+  .tip span { font-weight: 600; display: block; margin-bottom: 2px; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.05em; }
+  .variation { margin-top: 10px; background: var(--cream); border: 1px solid var(--divider); border-radius: 8px; padding: 10px 12px; font-size: 0.82rem; color: var(--mid); }
+  .variation span { font-weight: 600; display: block; margin-bottom: 3px; color: var(--charcoal); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  .circuit-block { margin-top: 10px; background: var(--cream); border: 1px solid var(--divider); border-radius: 8px; padding: 12px 14px; }
+  .circuit-block span { font-weight: 600; display: block; margin-bottom: 6px; color: var(--charcoal); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  .circuit-block ol { padding-left: 18px; font-size: 0.84rem; color: var(--mid); line-height: 1.9; }
+  .circuit-block ol li strong { color: var(--charcoal); font-weight: 500; }
+  footer { margin: 28px 16px 0; background: var(--charcoal); border-radius: 12px; padding: 20px; color: #AAA49E; font-size: 0.82rem; line-height: 1.8; }
   footer strong { color: var(--cream); }
 </style>
 </head>
 <body>
 
 <header>
-  <h1>Home Workout Routine</h1>
+  <h1>Home Workout Exercises</h1>
   <p>Beginner · Full Body</p>
 </header>
 
@@ -282,22 +100,47 @@
   Pick whichever feels right for the week. If you miss a day, just pick up where you left off.
 </div>
 
+<div style="margin: 8px 16px 8px; background: var(--warm-white); border: 1px solid var(--divider); border-radius: 12px; padding: 14px 16px;">
+  <div style="font-size: 0.88rem; color: var(--mid); line-height: 1.7;">
+    For each strength session, <strong style="color: var(--charcoal);">pick 2 or 3 exercises from each muscle group</strong> below. You don't need to do every exercise every time — mix and match based on how you feel, and switch it up each session to keep things from getting stale.
+  </div>
+</div>
+
+<!-- LEGS -->
 <div class="section-label">Legs</div>
 
 <div class="exercise-card">
   <div class="card-header" onclick="toggle(this)">
     <span class="muscle-tag tag-legs">Legs</span>
     <span class="exercise-name">Squat</span>
-    <span class="sets-reps">2–3 × 10</span>
+    <span class="sets-reps">2-3 sets · 8-15 reps</span>
     <span class="chevron">▼</span>
   </div>
   <div class="card-body">
     <div class="how-to">
-      Stand with feet shoulder-width apart, toes pointed slightly out. <strong>Push your hips back and bend your knees</strong>, lowering until your thighs are as close to parallel to the floor as comfortable. Keep your chest up and knees tracking over your toes. Push through your heels to stand back up.
+      Stand with feet shoulder-width apart, toes pointed slightly out. Have a chair or wall within arm's reach for balance if needed. <strong>Push your hips back and bend your knees</strong>, lowering as far as comfortable while keeping your chest up and knees tracking over your toes. Push through your heels to stand back up. Go only as low as feels controlled — depth will improve over time.
     </div>
     <div class="progression">
       <span>Progression</span>
-      Start by squatting down to touch the ottoman and standing back up. If needed, sit fully and use your hands to help get up. Work toward just touching it lightly and standing without sitting.
+      Once squats feel comfortable and controlled, hold a dumbbell in each hand at your sides to add resistance.
+    </div>
+  </div>
+</div>
+
+<div class="exercise-card">
+  <div class="card-header" onclick="toggle(this)">
+    <span class="muscle-tag tag-legs">Legs</span>
+    <span class="exercise-name">Sumo Squat</span>
+    <span class="sets-reps">2-3 sets · 8-15 reps</span>
+    <span class="chevron">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="how-to">
+      Stand with feet wider than shoulder-width, toes turned out at about 45°. <strong>Sit straight down between your knees</strong>, keeping your chest tall and your knees pushing out in line with your toes. Push through your heels to stand. The wider stance takes pressure off the knees and works the inner thighs more than a regular squat.
+    </div>
+    <div class="progression">
+      <span>Progression</span>
+      Once comfortable, hold one dumbbell with both hands hanging between your legs, or hold a dumbbell in each hand at your sides.
     </div>
   </div>
 </div>
@@ -306,43 +149,108 @@
   <div class="card-header" onclick="toggle(this)">
     <span class="muscle-tag tag-legs">Legs</span>
     <span class="exercise-name">Reverse Lunge</span>
-    <span class="sets-reps">2–3 × 8 each</span>
+    <span class="sets-reps">2-3 sets · 8-15 reps each</span>
     <span class="chevron">▼</span>
   </div>
   <div class="card-body">
     <div class="how-to">
-      Stand tall, feet together. <strong>Step one foot back</strong> and lower your back knee toward the floor, keeping your front knee directly over your ankle. Push through your front heel to step back to standing. Alternate legs each rep. Hold a chair or wall for balance if needed.
+      Stand tall, feet together, one hand on a wall or chair back for balance if needed. <strong>Step one foot back</strong> and lower your back knee toward the floor, keeping your front knee directly over your ankle. Push through your front heel to step back to standing. Alternate legs each rep.
     </div>
-    <div class="tip">
-      <span>Why reverse instead of forward</span>
-      Stepping back is easier on the knees and requires less balance than a standard forward lunge.
+    <div class="progression">
+      <span>Progression</span>
+      Once lunges feel controlled, hold a dumbbell in each hand at your sides to add resistance.
     </div>
   </div>
 </div>
 
+<div class="exercise-card">
+  <div class="card-header" onclick="toggle(this)">
+    <span class="muscle-tag tag-legs">Legs</span>
+    <span class="exercise-name">Step-Up</span>
+    <span class="sets-reps">2-3 sets · 8-15 reps each</span>
+    <span class="chevron">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="how-to">
+      Stand in front of a sturdy step or the bottom stair. <strong>Place one foot fully on the step and drive through that heel to lift yourself up</strong> until that leg is straight. Bring the other foot up to meet it, then step back down one foot at a time. Lead with the same leg for all reps on one side, then switch. Hold a wall or railing for balance as needed.
+    </div>
+    <div class="progression">
+      <span>Progression</span>
+      Once step-ups feel solid, hold a dumbbell in each hand at your sides to increase the challenge.
+    </div>
+  </div>
+</div>
+
+<div class="exercise-card">
+  <div class="card-header" onclick="toggle(this)">
+    <span class="muscle-tag tag-legs">Legs</span>
+    <span class="exercise-name">Romanian Deadlift (RDL)</span>
+    <span class="sets-reps">2-3 sets · 8-15 reps</span>
+    <span class="chevron">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="how-to">
+      Stand with feet hip-width apart, a very slight bend in your knees — roughly 10 to 15 degrees, just enough so they're not locked out. That knee angle stays fixed throughout the movement; this is not a squat. <strong>Push your hips straight back</strong> as if you're trying to touch the wall behind you, and let your torso hinge forward slowly as your hips travel back. Lower only as far as your hips will allow — the moment your hips stop moving backward, that is your end point. <strong>Do not continue hinging lower if your hips can't go with it</strong>, as that shifts the load into your lower back rather than your hamstrings. Drive your hips forward to return to standing. You should feel a deep stretch through the back of your legs at the bottom.
+    </div>
+    <div class="progression">
+      <span>Progression</span>
+      Once comfortable with bodyweight, hold a dumbbell in each hand in front of your thighs, letting them travel down your legs as you hinge.
+    </div>
+    <div class="tip">
+      <span>What this works</span>
+      Primarily the hamstrings and glutes, with the lower back stabilizing. One of the most effective posterior chain exercises you can do.
+    </div>
+  </div>
+</div>
+
+<!-- GLUTES -->
 <div class="section-label">Glutes & Hips</div>
 
 <div class="exercise-card">
   <div class="card-header" onclick="toggle(this)">
     <span class="muscle-tag tag-glutes">Glutes</span>
     <span class="exercise-name">Hip Thrust</span>
-    <span class="sets-reps">2–3 × 12</span>
+    <span class="sets-reps">2-3 sets · 8-15 reps</span>
     <span class="chevron">▼</span>
   </div>
   <div class="card-body">
     <div class="how-to">
       Sit on the floor with your upper back resting against the couch cushion, knees bent, feet flat on the floor. <strong>Drive through your heels and squeeze your glutes</strong> to lift your hips until your body forms a straight line from shoulders to knees. Hold for a second at the top, then lower back down slowly.
     </div>
+    <div class="progression">
+      <span>Progression</span>
+      Place a dumbbell, a heavy book, or any weighted object across your hips to add resistance. Hold it in place with both hands so it doesn't shift during the movement.
+    </div>
   </div>
 </div>
 
+<div class="exercise-card">
+  <div class="card-header" onclick="toggle(this)">
+    <span class="muscle-tag tag-glutes">Glutes</span>
+    <span class="exercise-name">Donkey Kick</span>
+    <span class="sets-reps">2-3 sets · 8-15 reps each</span>
+    <span class="chevron">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="variation">
+      <span>Floor version — if feeling good</span>
+      Get on all fours with hands under shoulders and knees under hips. <strong>Keeping your knee bent at 90°, kick one leg back and up</strong> until your foot points toward the ceiling and your thigh is parallel to the floor. Squeeze your glute at the top, then <strong>lower your leg slowly and with control</strong> — resist the urge to let it drop back down. The slow return is where a significant portion of the work happens. Complete all reps on one side before switching.
+    </div>
+    <div class="variation">
+      <span>Standing version — on tougher days</span>
+      Stand facing a wall or chair back for support. <strong>Kick one leg straight back</strong>, squeezing your glute as your leg lifts behind you. Keep your upper body still and avoid arching your lower back. Then <strong>lower your leg back slowly and with control</strong> rather than letting it swing back into place. Letting the leg drop eliminates most of the benefit of the exercise. Complete all reps on one side before switching.
+    </div>
+  </div>
+</div>
+
+<!-- BACK -->
 <div class="section-label">Back</div>
 
 <div class="exercise-card">
   <div class="card-header" onclick="toggle(this)">
     <span class="muscle-tag tag-back">Back</span>
     <span class="exercise-name">Single Arm Dumbbell Row</span>
-    <span class="sets-reps">2–3 × 10 each</span>
+    <span class="sets-reps">2-3 sets · 8-15 reps each</span>
     <span class="chevron">▼</span>
   </div>
   <div class="card-body">
@@ -352,18 +260,37 @@
   </div>
 </div>
 
+<div class="exercise-card">
+  <div class="card-header" onclick="toggle(this)">
+    <span class="muscle-tag tag-back">Back</span>
+    <span class="exercise-name">Bent Over Row</span>
+    <span class="sets-reps">2-3 sets · 8-15 reps</span>
+    <span class="chevron">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="how-to">
+      Stand with feet shoulder-width apart holding a dumbbell in each hand. <strong>Hinge forward at the hips about 45°</strong>, keeping your back flat and knees slightly bent. Let the dumbbells hang in front of you, then <strong>pull both toward your hips simultaneously</strong>, elbows close to your sides. Squeeze at the top, then lower slowly. Think of it as pulling your elbows straight back rather than lifting the weights up.
+    </div>
+    <div class="tip">
+      <span>Back position</span>
+      If your lower back starts to round or ache, stand more upright. A slight hinge is all that's needed.
+    </div>
+  </div>
+</div>
+
+<!-- CHEST -->
 <div class="section-label">Chest</div>
 
 <div class="exercise-card">
   <div class="card-header" onclick="toggle(this)">
     <span class="muscle-tag tag-chest">Chest</span>
     <span class="exercise-name">Wall Push-Up</span>
-    <span class="sets-reps">2–3 × 10–15</span>
+    <span class="sets-reps">2-3 sets · 8-15 reps</span>
     <span class="chevron">▼</span>
   </div>
   <div class="card-body">
     <div class="how-to">
-      Stand facing a wall, arms extended, hands flat on the wall at shoulder height. <strong>Bend your elbows and lower your chest toward the wall</strong>, then push back to the start. The further your feet are from the wall, the harder it is.
+      Stand facing a wall, arms extended, hands flat on the wall at shoulder height and slightly wider than shoulder-width. <strong>Bend your elbows and lower your chest toward the wall</strong>, then push back to the start. The further your feet are from the wall, the harder it is.
     </div>
     <div class="progression">
       <span>Progression</span>
@@ -372,13 +299,32 @@
   </div>
 </div>
 
+<div class="exercise-card">
+  <div class="card-header" onclick="toggle(this)">
+    <span class="muscle-tag tag-chest">Chest</span>
+    <span class="exercise-name">Dumbbell Floor Fly</span>
+    <span class="sets-reps">2-3 sets · 8-15 reps</span>
+    <span class="chevron">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="how-to">
+      Lie on your back on the floor with a dumbbell in each hand, arms extended straight up over your chest, palms facing each other. <strong>With a slight bend in your elbows, slowly lower both arms out to the sides</strong> until your upper arms rest on the floor or you feel a stretch across your chest. Bring them back up like you're hugging a large tree. Keep the same slight elbow bend throughout.
+    </div>
+    <div class="tip">
+      <span>Weight tip</span>
+      Start with 5lb dumbbells. The arc of the fly puts more demand on the shoulder than it looks — lighter is right here.
+    </div>
+  </div>
+</div>
+
+<!-- SHOULDERS -->
 <div class="section-label">Shoulders</div>
 
 <div class="exercise-card">
   <div class="card-header" onclick="toggle(this)">
     <span class="muscle-tag tag-shoulders">Shoulders</span>
     <span class="exercise-name">Seated Dumbbell Press</span>
-    <span class="sets-reps">2–3 × 10</span>
+    <span class="sets-reps">2-3 sets · 8-15 reps</span>
     <span class="chevron">▼</span>
   </div>
   <div class="card-body">
@@ -388,13 +334,46 @@
   </div>
 </div>
 
-<div class="section-label">Arms</div>
+<div class="exercise-card">
+  <div class="card-header" onclick="toggle(this)">
+    <span class="muscle-tag tag-shoulders">Shoulders</span>
+    <span class="exercise-name">Lateral Raise</span>
+    <span class="sets-reps">2-3 sets · 8-15 reps</span>
+    <span class="chevron">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="how-to">
+      Stand or sit with a dumbbell in each hand at your sides, palms facing in. <strong>With a slight bend in your elbows, raise both arms out to the sides</strong> until they reach shoulder height — no higher. Lower slowly. Keep your shoulders relaxed down throughout — avoid shrugging.
+    </div>
+    <div class="tip">
+      <span>Weight tip</span>
+      The 2 or 5lb dumbbells are the right call here. Lateral raises feel much heavier than they look and most people go too heavy.
+    </div>
+  </div>
+</div>
+
+<div class="exercise-card">
+  <div class="card-header" onclick="toggle(this)">
+    <span class="muscle-tag tag-shoulders">Shoulders</span>
+    <span class="exercise-name">Front Raise</span>
+    <span class="sets-reps">2-3 sets · 8-15 reps</span>
+    <span class="chevron">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="how-to">
+      Stand with a dumbbell in each hand in front of your thighs, palms facing down. <strong>Raise one arm straight forward to shoulder height</strong>, keeping a slight bend in the elbow. Lower it back down, then raise the other arm. Alternate sides for each rep. Keep your core tight and avoid leaning back as you lift.
+    </div>
+  </div>
+</div>
+
+<!-- BICEPS -->
+<div class="section-label">Biceps</div>
 
 <div class="exercise-card">
   <div class="card-header" onclick="toggle(this)">
     <span class="muscle-tag tag-biceps">Biceps</span>
     <span class="exercise-name">Dumbbell Curl</span>
-    <span class="sets-reps">2–3 × 10–12</span>
+    <span class="sets-reps">2-3 sets · 8-15 reps</span>
     <span class="chevron">▼</span>
   </div>
   <div class="card-body">
@@ -406,9 +385,26 @@
 
 <div class="exercise-card">
   <div class="card-header" onclick="toggle(this)">
+    <span class="muscle-tag tag-biceps">Biceps</span>
+    <span class="exercise-name">Hammer Curl</span>
+    <span class="sets-reps">2-3 sets · 8-15 reps</span>
+    <span class="chevron">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="how-to">
+      Same starting position as a regular curl, but with your palms facing each other — thumbs pointing up — instead of forward. <strong>Curl both dumbbells up toward your shoulders</strong> keeping that neutral grip throughout. This variation works slightly different parts of the bicep and the forearm compared to the standard curl.
+    </div>
+  </div>
+</div>
+
+<!-- TRICEPS -->
+<div class="section-label">Triceps</div>
+
+<div class="exercise-card">
+  <div class="card-header" onclick="toggle(this)">
     <span class="muscle-tag tag-triceps">Triceps</span>
     <span class="exercise-name">Dumbbell Kickback</span>
-    <span class="sets-reps">2–3 × 10–12</span>
+    <span class="sets-reps">2-3 sets · 8-15 reps</span>
     <span class="chevron">▼</span>
   </div>
   <div class="card-body">
@@ -418,13 +414,32 @@
   </div>
 </div>
 
+<div class="exercise-card">
+  <div class="card-header" onclick="toggle(this)">
+    <span class="muscle-tag tag-triceps">Triceps</span>
+    <span class="exercise-name">Tricep Dip</span>
+    <span class="sets-reps">2-3 sets · 8-15 reps</span>
+    <span class="chevron">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="how-to">
+      Sit on the edge of a sturdy chair or couch with your hands gripping the edge beside your hips, fingers pointing forward. Slide your hips off the edge. <strong>Bend your elbows and lower your hips toward the floor</strong>, keeping your back close to the chair. Push back up by straightening your arms. Keep your feet flat on the floor and knees bent to make it more manageable.
+    </div>
+    <div class="tip">
+      <span>Make it easier</span>
+      Keep your feet closer to your body with more knee bend. The closer your feet, the less weight your arms have to handle.
+    </div>
+  </div>
+</div>
+
+<!-- CORE -->
 <div class="section-label">Core</div>
 
 <div class="exercise-card">
   <div class="card-header" onclick="toggle(this)">
     <span class="muscle-tag tag-core">Core</span>
     <span class="exercise-name">Dead Bug</span>
-    <span class="sets-reps">2 × 8 each side</span>
+    <span class="sets-reps">2-3 sets · 8-15 reps each</span>
     <span class="chevron">▼</span>
   </div>
   <div class="card-body">
@@ -438,9 +453,177 @@
   </div>
 </div>
 
+<div class="exercise-card">
+  <div class="card-header" onclick="toggle(this)">
+    <span class="muscle-tag tag-core">Core</span>
+    <span class="exercise-name">Bird Dog</span>
+    <span class="sets-reps">2-3 sets · 8-15 reps each</span>
+    <span class="chevron">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="how-to">
+      Start on all fours with hands directly under shoulders and knees under hips. <strong>At the same time, extend one arm straight forward and the opposite leg straight back</strong>, keeping your hips level and your back flat. Hold for a second, then bring them back in and switch sides. Avoid letting your hips rotate or your lower back arch.
+    </div>
+    <div class="tip">
+      <span>vs. Dead Bug</span>
+      Same concept as the dead bug but on all fours — easier to get into for some people, harder to balance.
+    </div>
+  </div>
+</div>
+
+<div class="exercise-card">
+  <div class="card-header" onclick="toggle(this)">
+    <span class="muscle-tag tag-core">Core</span>
+    <span class="exercise-name">Seated Knee Tuck</span>
+    <span class="sets-reps">2-3 sets · 8-15 reps</span>
+    <span class="chevron">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="how-to">
+      Sit on the edge of a sturdy chair, hands gripping the sides for support, leaning back slightly. <strong>Lift both knees toward your chest</strong> by contracting your core, then lower your feet back down without letting them fully touch the floor. Keep the movement slow and controlled — no swinging.
+    </div>
+    <div class="tip">
+      <span>Make it easier</span>
+      Lift one knee at a time, alternating sides.
+    </div>
+  </div>
+</div>
+
+<!-- CARDIO -->
+<div class="section-label">Cardio</div>
+
+<div class="exercise-card">
+  <div class="card-header" onclick="toggle(this)">
+    <span class="muscle-tag tag-cardio">Cardio</span>
+    <span class="exercise-name">Elliptical — Steady State</span>
+    <span class="sets-reps">20–30 min</span>
+    <span class="chevron">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="how-to">
+      Set the elliptical to a comfortable resistance and maintain a consistent pace for the full session. <strong>Your target is a heart rate of around 130 bpm</strong> — you should be breathing noticeably but still able to speak in short sentences. This is the foundation session and the one to default to when energy is lower.
+    </div>
+    <div class="tip">
+      <span>Good to know</span>
+      Steady state cardio at moderate intensity is highly effective for fat burning and building your aerobic base without overdoing it on recovery demand.
+    </div>
+  </div>
+</div>
+
+<div class="exercise-card">
+  <div class="card-header" onclick="toggle(this)">
+    <span class="muscle-tag tag-cardio">Cardio</span>
+    <span class="exercise-name">Elliptical — Intervals</span>
+    <span class="sets-reps">20–25 min</span>
+    <span class="chevron">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="how-to">
+      Alternate between a hard push and an easy recovery throughout the session.
+    </div>
+    <div class="circuit-block">
+      <span>Session structure</span>
+      <ol>
+        <li><strong>5 min</strong> — easy warm-up pace</li>
+        <li><strong>1 min hard</strong> — increase resistance or speed, push your effort to a 7–8 out of 10</li>
+        <li><strong>2 min easy</strong> — drop back to a comfortable recovery pace</li>
+        <li>Repeat the hard/easy cycle <strong>5–6 times</strong></li>
+        <li><strong>3–5 min</strong> — easy cool-down</li>
+      </ol>
+    </div>
+    <div class="tip">
+      <span>Why this works</span>
+      Intervals burn more calories in less time than steady state and keep your metabolism elevated after the session ends.
+    </div>
+  </div>
+</div>
+
+<div class="exercise-card">
+  <div class="card-header" onclick="toggle(this)">
+    <span class="muscle-tag tag-cardio">Cardio</span>
+    <span class="exercise-name">Elliptical — Resistance Ladder</span>
+    <span class="sets-reps">25–30 min</span>
+    <span class="chevron">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="how-to">
+      Keep your pace consistent throughout but climb resistance levels every few minutes, then come back down.
+    </div>
+    <div class="circuit-block">
+      <span>Session structure</span>
+      <ol>
+        <li><strong>5 min</strong> — resistance level 3 (warm-up)</li>
+        <li><strong>5 min</strong> — resistance level 5</li>
+        <li><strong>5 min</strong> — resistance level 7</li>
+        <li><strong>5 min</strong> — resistance level 5</li>
+        <li><strong>5 min</strong> — resistance level 3 (cool-down)</li>
+      </ol>
+    </div>
+    <div class="tip">
+      <span>Adjust to your machine</span>
+      Resistance numbers vary by elliptical model. The goal is a noticeable step up in effort each level — adjust numbers accordingly.
+    </div>
+  </div>
+</div>
+
+<div class="exercise-card">
+  <div class="card-header" onclick="toggle(this)">
+    <span class="muscle-tag tag-cardio">Cardio</span>
+    <span class="exercise-name">Home Circuit — Low Impact</span>
+    <span class="sets-reps">20–30 min</span>
+    <span class="chevron">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="how-to">
+      Move through each exercise back to back with minimal rest. Rest 60–90 seconds after completing all exercises, then repeat the circuit 3–4 times total. Focus on keeping your heart rate up rather than going fast — controlled movement throughout.
+    </div>
+    <div class="circuit-block">
+      <span>Circuit — repeat 3–4 rounds</span>
+      <ol>
+        <li><strong>March in place</strong> — 45 seconds, drive your knees up with purpose</li>
+        <li><strong>Step touches</strong> — 45 seconds, step side to side reaching your opposite arm across</li>
+        <li><strong>Stair walk</strong> — up and down one flight or step up and down on the bottom stair, 45 seconds</li>
+        <li><strong>Low impact jumping jack</strong> — 45 seconds, step one foot out at a time instead of jumping, arms still go overhead</li>
+        <li><strong>Standing bicycle</strong> — 45 seconds, hands behind head, bring one knee up while rotating the opposite elbow toward it, alternate sides</li>
+        <li><strong>Heel-to-toe walk</strong> — 30 seconds, walk forward placing heel directly in front of toe each step, then walk back</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<div class="exercise-card">
+  <div class="card-header" onclick="toggle(this)">
+    <span class="muscle-tag tag-cardio">Cardio</span>
+    <span class="exercise-name">Home Circuit — Strength Cardio</span>
+    <span class="sets-reps">20–25 min</span>
+    <span class="chevron">▼</span>
+  </div>
+  <div class="card-body">
+    <div class="how-to">
+      Combines light dumbbells with movement to keep the heart rate up while adding a small muscle stimulus. Move at a pace that keeps you breathing hard. Rest 60–90 seconds between rounds.
+    </div>
+    <div class="circuit-block">
+      <span>Circuit — repeat 3 rounds</span>
+      <ol>
+        <li><strong>Squat to overhead press</strong> — 12 reps, squat down and as you stand press both dumbbells overhead (use 5–8 lbs)</li>
+        <li><strong>March in place</strong> — 45 seconds, drive your knees up with purpose</li>
+        <li><strong>Dumbbell curl to press</strong> — 10 reps, curl the dumbbells up then press them overhead in one fluid motion</li>
+        <li><strong>Step touch with lateral raise</strong> — 45 seconds, step side to side and raise arms to shoulder height on each step (use 2–5 lbs)</li>
+        <li><strong>Reverse lunge alternating</strong> — 10 reps each leg, bodyweight only, controlled pace</li>
+        <li><strong>Bent over dumbbell row</strong> — 12 reps, hinge forward, pull both dumbbells toward your hips, lower slowly (use 8–10 lbs)</li>
+        <li><strong>Romanian Deadlift (RDL)</strong> — 12 reps, stand with feet hip-width apart and a slight bend in your knees (roughly 10-15°). Push your hips straight back while hinging forward slowly. When your hips won't push back any further, stop there and return — don't continue lowering if the hips are done moving. Bodyweight only, slow and controlled each direction.</li>
+      </ol>
+    </div>
+    <div class="tip">
+      <span>Good to know</span>
+      This circuit doubles as light full-body conditioning. It won't replace a dedicated strength session, but on days you want to move without committing to a full workout, this covers both bases.
+    </div>
+  </div>
+</div>
+
 <footer>
   <strong>General guidelines</strong><br>
-  Rest 60–90 seconds between sets. Start with light dumbbells (5–8 lbs) and only add weight when the last few reps feel easy. It's okay to do fewer sets at first — 2 sets of everything is plenty to start. The goal right now is learning the movements and building the habit.
+  Rest 1–2 minutes between sets. Only add weight when the last few reps of a set start to feel easy, or when you can complete 12–15 reps with good form and still have something left in the tank. Focus on controlling the weight in both directions — especially on the way back down. The return to the starting position (called the eccentric) is when the muscle is lengthening back out after it contracted, and slowing it down is one of the most effective things you can do to build strength and see results. Letting weights drop fast is wasted effort.
 </footer>
 
 <script>
@@ -451,6 +634,5 @@
     chevron.classList.toggle('open');
   }
 </script>
-
 </body>
 </html>
