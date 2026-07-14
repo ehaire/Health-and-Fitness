@@ -1,0 +1,24 @@
+name: Keep Supabase Active
+on:
+  schedule:
+    - cron: '0 12 * * 0,3'
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Insert heartbeat row
+        run: |
+          response=$(curl -s -o response.txt -w "%{http_code}" -X POST "https://yzsivxmhottmzzeqotxx.supabase.co/rest/v1/heartbeat_pings" \
+            -H "apikey: ${{ secrets.SUPABASE_ANON_KEY }}" \
+            -H "Authorization: Bearer ${{ secrets.SUPABASE_ANON_KEY }}" \
+            -H "Content-Type: application/json" \
+            -H "Prefer: return=minimal" \
+            -d '{}')
+          echo "HTTP status: $response"
+          cat response.txt
+          if [ "$response" -lt 200 ] || [ "$response" -ge 300 ]; then
+            echo "Heartbeat insert failed"
+            exit 1
+          fi
